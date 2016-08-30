@@ -24,11 +24,12 @@ export default class Calculator extends React.Component {
 
   submitCalc() {
     const result = eval(this.state.calc);
-    const calc = `${this.state.calc} = ${result}`;
+    let calc = `${this.state.calc} = ${result}`;
     const history = [
        ...this.state.history,
        calc
     ];
+    calc = result;
     this.setState({ ...this.state, history, calc });
   }
 
