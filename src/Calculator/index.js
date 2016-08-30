@@ -6,7 +6,7 @@ export default class Calculator extends React.Component {
   constructor(props) {
      super(props);
      this.state = {
-        calc: "",
+        calc: '',
         history: []
      };
 
@@ -24,7 +24,7 @@ export default class Calculator extends React.Component {
 
   submitCalc() {
     const result = eval(this.state.calc);
-    const calc = this.state.calc + " = " + result;
+    const calc = `${this.state.calc} = ${result}`;
     const history = [
        ...this.state.history,
        calc
@@ -33,7 +33,7 @@ export default class Calculator extends React.Component {
   }
 
   clear() {
-    this.setState({ ...this.state, calc: "" });
+    this.setState({ ...this.state, calc: '' });
   }
 
   render() {
@@ -44,57 +44,57 @@ export default class Calculator extends React.Component {
         </div>
         <div className="row calculator-buttons">
           <div className="col-md-6">
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>1</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>2</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>3</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>4</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>5</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>6</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>7</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>8</Button>
-          </div>
-          <div className="col-md-4">
-            <Button onClick={this.buttonClick()}>9</Button>
-          </div>
-          <div className="col-md-6">
-            <Button onClick={this.buttonClick()}>0</Button>
-          </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>1</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>2</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>3</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>4</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>5</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>6</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>7</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>8</Button>
+            </div>
+            <div className="col-md-4">
+              <Button onClick={this.buttonClick()}>9</Button>
+            </div>
+            <div className="col-md-6">
+              <Button onClick={this.buttonClick()}>0</Button>
+            </div>
           </div>
 
           <div className="col-md-6 calculator-op-buttons">
-          <div className="col-md-6">
-          <Button onClick={this.buttonClick()}>+</Button>
-          </div>
-          <div className="col-md-6">
-          <Button onClick={this.buttonClick()}>-</Button>
-          </div>
-          <div className="col-md-6">
-          <Button onClick={this.buttonClick()}>*</Button>
-          </div>
-          <div className="col-md-6">
-          <Button onClick={this.buttonClick()}>/</Button>
-          </div>
-          <div className="col-md-6">
-          <Button onClick={this.clear}>CR</Button>
-          </div>
-          <div className="col-md-12">
-          <Button onClick={this.submitCalc}>=</Button>
-          </div>
+            <div className="col-md-6">
+              <Button onClick={this.buttonClick()}>+</Button>
+            </div>
+            <div className="col-md-6">
+              <Button onClick={this.buttonClick()}>-</Button>
+            </div>
+            <div className="col-md-6">
+              <Button onClick={this.buttonClick()}>*</Button>
+            </div>
+            <div className="col-md-6">
+              <Button onClick={this.buttonClick()}>/</Button>
+            </div>
+            <div className="col-md-6">
+              <Button onClick={this.clear}>CR</Button>
+            </div>
+            <div className="col-md-12">
+              <Button onClick={this.submitCalc}>=</Button>
+            </div>
           </div>
        </div>
      </div>
