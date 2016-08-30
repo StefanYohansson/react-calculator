@@ -2,6 +2,80 @@
 <html>
   <head>
     <title>React Calculator</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+      #root {
+        width: 960px;
+        margin: 0 auto;
+      }
+      #root h1 {
+        text-align: center;
+      }
+      #calculator {
+        width: 420px;
+        margin: 0 auto;
+        background: #f9f9f9;
+        border: 6px solid #999;
+      }
+      #calculator-display {
+        width: 95.3%;
+        height: 60px;
+        color: #888;
+        font-size: 50px;
+        font-weight: bolder;
+        padding: 10px;
+        border: 0;
+        border-bottom: 2px dashed #999;
+      }
+      #calculator-display:disabled {
+        background-color: #FCFCFC;
+      }
+      .clearfix {
+        clear: both;
+      }
+      #calculator button {
+        color: #999;
+        font-size: 30px;
+        border: 0px;
+        font-weight: bolder;
+        background-color: #E3E3E3;
+      }
+      .calculator-buttons {
+        float: left;
+        width: 60%;
+        margin-bottom: 20px;
+      }
+      .calculator-buttons .calculator-button {
+        margin-left: 1px;
+        float: left;
+        width: 31%;
+      }
+      .calculator-buttons .calculator-button button {
+        margin: 10px;
+        padding: 15px;
+        width: 100%;
+      }
+      .calculator-action-buttons {
+        width: 40%;
+        float: right;
+      }
+      .calculator-action-buttons .calculator-button {
+        float: left;
+        width: 42%;
+        margin-left: 1px;
+      }
+      .calculator-action-buttons .calculator-button button {
+        margin: 10px;
+        padding: 15px;
+        width: 100%;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+    </style>
   </head>
   <body>
     <div id='root'>

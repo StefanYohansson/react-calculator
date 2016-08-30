@@ -39,64 +39,40 @@ export default class Calculator extends React.Component {
   render() {
     return (
       <div id="calculator">
-        <div className="row">
-          <Display value={this.state.calc} disabled="disabled" />
-        </div>
-        <div className="row calculator-buttons">
-          <div className="col-md-6">
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>1</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>2</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>3</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>4</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>5</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>6</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>7</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>8</Button>
-            </div>
-            <div className="col-md-4">
-              <Button onClick={this.buttonClick()}>9</Button>
-            </div>
-            <div className="col-md-6">
-              <Button onClick={this.buttonClick()}>0</Button>
-            </div>
-          </div>
+        <Display value={this.state.calc} disabled="disabled" />
+        <div className="calculator-buttons">
+          <Button onClick={this.buttonClick()}>7</Button>
+          <Button onClick={this.buttonClick()}>8</Button>
+          <Button onClick={this.buttonClick()}>9</Button>
+          <div className="clearfix"></div>
 
-          <div className="col-md-6 calculator-op-buttons">
-            <div className="col-md-6">
-              <Button onClick={this.buttonClick()}>+</Button>
-            </div>
-            <div className="col-md-6">
-              <Button onClick={this.buttonClick()}>-</Button>
-            </div>
-            <div className="col-md-6">
-              <Button onClick={this.buttonClick()}>*</Button>
-            </div>
-            <div className="col-md-6">
-              <Button onClick={this.buttonClick()}>/</Button>
-            </div>
-            <div className="col-md-6">
-              <Button onClick={this.clear}>CR</Button>
-            </div>
-            <div className="col-md-12">
-              <Button onClick={this.submitCalc}>=</Button>
-            </div>
-          </div>
-       </div>
+          <Button onClick={this.buttonClick()}>4</Button>
+          <Button onClick={this.buttonClick()}>5</Button>
+          <Button onClick={this.buttonClick()}>6</Button>
+          <div className="clearfix"></div>
+
+          <Button onClick={this.buttonClick()}>1</Button>
+          <Button onClick={this.buttonClick()}>2</Button>
+          <Button onClick={this.buttonClick()}>3</Button>
+          <div className="clearfix"></div>
+
+          <Button onClick={this.buttonClick()}>0</Button>
+        </div>
+
+        <div className="calculator-action-buttons">
+          <Button onClick={this.buttonClick()}>+</Button>
+          <Button onClick={this.buttonClick()}>-</Button>
+          <div className="clearfix"></div>
+
+          <Button onClick={this.buttonClick()}>*</Button>
+          <Button onClick={this.buttonClick()}>/</Button>
+          <div className="clearfix"></div>
+
+          <Button onClick={this.submitCalc}>=</Button>
+          <Button onClick={this.clear}>CR</Button>
+          <div className="clearfix"></div>
+        </div>
+        <div className="clearfix"></div>
      </div>
    );
   }
