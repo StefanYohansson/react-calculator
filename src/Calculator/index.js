@@ -1,80 +1,71 @@
 import React from 'react';
+import { compose, withState, mapProps } from 'recompose';
 import Display from './Display';
 import Button from './Button';
 
-export default class Calculator extends React.Component {
-  constructor(props) {
-     super(props);
-     this.state = {
-        calc: '',
-        history: []
-     };
+const enhance = compose(
+  withState('calc', 'handleClick', '0'),
+  mapProps(({ calc, handleClick }) => ({
+    buttonClick: (event) => {
+      event.persist();
+      return handleClick(() => {
+        const value = event.target.innerText;
 
-     this.buttonClick = this.buttonClick.bind(this);
-     this.submitCalc = this.submitCalc.bind(this);
-     this.clear = this.clear.bind(this);
-  }
+        if (calc === '0' &&  value !== '0')
+          return value;
 
-  buttonClick() {
-    return (e) => {
-      const calc = this.state.calc + e.target.innerText;
-      this.setState({ ...this.state, calc });
-    };
-  }
+        return calc + value;
+      });
+    },
+    submitCalc: () => handleClick(() => {
+      try {
+        return eval(calc);
+      } catch (e) {
+        return calc;
+      }
+    }),
+    clear: () => handleClick(() => '0'),
+    calc
+  }))
+);
 
-  submitCalc() {
-    const result = eval(this.state.calc);
-    let calc = `${this.state.calc} = ${result}`;
-    const history = [
-       ...this.state.history,
-       calc
-    ];
-    calc = result;
-    this.setState({ ...this.state, history, calc });
-  }
+const Calculator = enhance(({ calc, buttonClick, submitCalc, clear }) =>
+  <div id="calculator">
+    <Display value={calc} disabled="disabled" />
+    <div className="calculator-buttons">
+      <Button onClick={buttonClick}>7</Button>
+      <Button onClick={buttonClick}>8</Button>
+      <Button onClick={buttonClick}>9</Button>
+      <div className="clearfix"></div>
 
-  clear() {
-    this.setState({ ...this.state, calc: '' });
-  }
+      <Button onClick={buttonClick}>4</Button>
+      <Button onClick={buttonClick}>5</Button>
+      <Button onClick={buttonClick}>6</Button>
+      <div className="clearfix"></div>
 
-  render() {
-    return (
-      <div id="calculator">
-        <Display value={this.state.calc} disabled="disabled" />
-        <div className="calculator-buttons">
-          <Button onClick={this.buttonClick()}>7</Button>
-          <Button onClick={this.buttonClick()}>8</Button>
-          <Button onClick={this.buttonClick()}>9</Button>
-          <div className="clearfix"></div>
+      <Button onClick={buttonClick}>1</Button>
+      <Button onClick={buttonClick}>2</Button>
+      <Button onClick={buttonClick}>3</Button>
+      <div className="clearfix"></div>
 
-          <Button onClick={this.buttonClick()}>4</Button>
-          <Button onClick={this.buttonClick()}>5</Button>
-          <Button onClick={this.buttonClick()}>6</Button>
-          <div className="clearfix"></div>
+      <Button onClick={buttonClick}>0</Button>
+    </div>
 
-          <Button onClick={this.buttonClick()}>1</Button>
-          <Button onClick={this.buttonClick()}>2</Button>
-          <Button onClick={this.buttonClick()}>3</Button>
-          <div className="clearfix"></div>
+    <div className="calculator-action-buttons">
+      <Button onClick={buttonClick}>+</Button>
+      <Button onClick={buttonClick}>-</Button>
+      <div className="clearfix"></div>
 
-          <Button onClick={this.buttonClick()}>0</Button>
-        </div>
+      <Button onClick={buttonClick}>*</Button>
+      <Button onClick={buttonClick}>/</Button>
+      <div className="clearfix"></div>
 
-        <div className="calculator-action-buttons">
-          <Button onClick={this.buttonClick()}>+</Button>
-          <Button onClick={this.buttonClick()}>-</Button>
-          <div className="clearfix"></div>
+      <Button onClick={submitCalc}>=</Button>
+      <Button onClick={clear}>CR</Button>
+      <div className="clearfix"></div>
+    </div>
+    <div className="clearfix"></div>
+  </div>
+);
 
-          <Button onClick={this.buttonClick()}>*</Button>
-          <Button onClick={this.buttonClick()}>/</Button>
-          <div className="clearfix"></div>
-
-          <Button onClick={this.submitCalc}>=</Button>
-          <Button onClick={this.clear}>CR</Button>
-          <div className="clearfix"></div>
-        </div>
-        <div className="clearfix"></div>
-     </div>
-   );
-  }
-}
+export default Calculator;
